@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "520793728771",
+    "firebase_url": "https://android-tutunaku.firebaseio.com",
+    "project_id": "android-tutunaku",
+    "storage_bucket": "android-tutunaku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520793728771:android:d84740e95769134a",
+        "android_client_info": {
+          "package_name": "com.android.kt.kgosnitachiwin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520793728771-r8272sqec8bht2bt0f9b9sdvrv5bv9eg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.kt.kgosnitachiwin",
+            "certificate_hash": "9c05fafbb7755242fd744dba7954c25ba0cc44c0"
+          }
+        },
+        {
+          "client_id": "520793728771-ovfm1umua20do1sm45tj27c7vc89hgdd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.kt.kgosnitachiwin",
+            "certificate_hash": "ccd12b771cb13363563fee3cd156f2d48f044233"
+          }
+        },
+        {
+          "client_id": "520793728771-8jmdt00bvofm1pgveovr3gob1621lknf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.kt.kgosnitachiwin",
+            "certificate_hash": "51937abb883e5100f6958e99af2bb572dd4c89d3"
+          }
+        },
+        {
+          "client_id": "520793728771-cfpfh35o6976mfr42ordimajhp08k6mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAwjH_KhYQruoHfBQcERkB5Q0XmbO8o9s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520793728771-cfpfh35o6976mfr42ordimajhp08k6mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
