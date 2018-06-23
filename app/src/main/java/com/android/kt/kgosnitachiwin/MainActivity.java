@@ -9,9 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.android.kt.secondary.DictionaryActivity;
-import com.android.kt.secondary.HearAndTraslateActivity;
+import com.android.kt.secondary.HearTraslateActivity;
 import com.android.kt.secondary.TasksApplicationActivity;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickButtonActivity2(View view){
-        Intent intent = new Intent(this, HearAndTraslateActivity.class);
+        Intent intent = new Intent(this, HearTraslateActivity.class);
         startActivity(intent);
     }
 

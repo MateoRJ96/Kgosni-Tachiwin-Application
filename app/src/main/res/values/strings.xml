@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Kgosni Tachiwin</string>
+    <string name="ok">Entendido</string>
+    <string name="ok2">Siguiente</string>
+    <string name="cancel">Cancelar</string>
+    <string name="close">Cerrar</string>
+    <string name="dialog_title">Conexión a internet</string>
+    <string name="dialog_title2">Respuesta</string>
+    <string name="dialog_message">¡Para aprovechar las funcionalidades de la aplicación necesitas
+    estar conectado a internet!</string>
+    <string name="dialog_message2">¡Felicidades tu respuesta es correcta!</string>
+    <string name="dialog_message3">¡La respuesta es incorrecta! Cierra este cuadro para ver la respuesta</string>
+    <string name="espaniol_tutunaku">Español - Tutunaku</string>
+    <string name="tutunaku_espaniol">Tutunaku - Español</string>
+    <string name="text1">Traduce la siguiente oración.</string>
+    <string name="text2">Oración generada</string>
+    <string name="text3">Traducción en español</string>
+    <string name="start">Iniciar</string>
+    <string name="omitted">Saltar</string>
+    <string name="verify_text">Verificar</string>
+    <string name="text4">image</string>
+    <string name="keyword">Palabra clave:  </string>
 </resources>
+

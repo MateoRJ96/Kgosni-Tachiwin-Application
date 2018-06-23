@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.kt.secondary.HearAndTraslateActivity">
+    tools:context="com.android.kt.secondary.HearTraslateActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -18,15 +18,26 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Traduce la siguiente oración." />
+            android:text="@string/text1"
+            android:textSize="18sp" />
+
+        <!--<ProgressBar
+            android:id="@+id/progressAudioId"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:indeterminate="false"
+            android:progress="0"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,16 +51,17 @@
                 android:id="@+id/playAudioId"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/ic_launcher_rounded"
-                app:srcCompat="@android:drawable/ic_lock_silent_mode_off"
-                android:layout_marginEnd="10dp"/>
+                app:srcCompat="@drawable/ic_volume_up_black_24dp"
+                android:contentDescription="@string/text4" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtOutputTutunakuId"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Oración en tutunaku"
+                android:text="@string/text2"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -65,42 +77,48 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_vertical|center_horizontal"
-                android:hint="Traducción en español"
+                android:hint="@string/text3"
                 android:inputType="text|textPersonName|textMultiLine"
                 android:maxLength="100"
                 android:maxLines="4"
                 android:scrollHorizontally="false"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
 
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout4"
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_horizontal"
-            style="?android:attr/buttonBarStyle">
+            android:orientation="horizontal">
+
             <Button
-                android:id="@+id/btnNextId"
+                android:id="@+id/btnOmmitedId"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Siguiente"
-                android:textAllCaps="false"
-                android:textSize="18sp"
                 android:layout_marginEnd="5dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                style="?android:attr/buttonBarButtonStyle"/>
+                android:text="@string/start"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
+
             <Button
                 android:id="@+id/btnVerifyId"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Verificar"
-                android:textAllCaps="false"
-                android:textSize="18sp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                style="?android:attr/buttonBarButtonStyle"/>
+                android:text="@string/verify_text"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.android.kt.secondary;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import com.android.kt.listeners.RecyclerTouchListener;
 import com.android.kt.adapters.WordListAdapter;
 import com.android.kt.entity.Word;
 import com.android.kt.kgosnitachiwin.R;
+import com.android.kt.services.AudioStreaming;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -27,40 +30,54 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class DictionaryActivity extends AppCompatActivity {
     private EditText txtSearch;
+    //private TextView txtTotalBusqueda;
     private List<Word> wordList;
     private SwitchCompat tipoBusqueda;
-    private RecyclerView listResult;
     private WordListAdapter wordListAdapter;
     private FirebaseFirestore db;
+
+    private AudioStreaming streaming = new AudioStreaming();
+    private MediaPlayer mediaPlayer = new MediaPlayer();
+
     private String TAG = "Firelog";
     private String TAG_SYSTEMLOG = "SystemLog";
+    private String TAG_STREAMING = "Streaming";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        listResult = findViewById(R.id.listResultId);
+        db = FirebaseFirestore.getInstance();
+
+        final RecyclerView listResult = findViewById(R.id.listResultId);
         txtSearch = findViewById(R.id.txtSearchId);
         tipoBusqueda = findViewById(R.id.tipoBusquedaId);
+        //txtTotalBusqueda = findViewById(R.id.txtTotalBusquedaId);
 
         tipoBusqueda.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    tipoBusqueda.setText("Totonaco - Español");
+                    tipoBusqueda.setText(R.string.espaniol_tutunaku);
                 }else{
-                    tipoBusqueda.setText("Español - Totonaco");
+                    tipoBusqueda.setText(R.string.tutunaku_espaniol);
                 }
             }
         });
+
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        streaming.setMediaPlayer(mediaPlayer);
 
         wordList = new ArrayList<>();
         wordListAdapter = new WordListAdapter(wordList);
@@ -73,8 +90,16 @@ public class DictionaryActivity extends AppCompatActivity {
         listResult.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), listResult, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Word word = wordList.get(position);
-                Toast.makeText(getApplicationContext(), word.getSpanish() + " is selected!", Toast.LENGTH_SHORT).show();
+                try{
+                    Word word = wordList.get(position);
+                    streaming.setUrlAudioStreaming(word.getUrl());
+                    streaming.startSimpleAudioStreaming();
+                    if(streaming.getStatusImage()){
+                        Toast.makeText(DictionaryActivity.this, "Reproduciendo...", Toast.LENGTH_SHORT).show();
+                    }
+                }catch(Exception e){
+                    Log.e(TAG_STREAMING, e.getMessage());
+                }
             }
 
             @Override
@@ -82,8 +107,6 @@ public class DictionaryActivity extends AppCompatActivity {
 
             }
         }));
-
-        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -108,9 +131,9 @@ public class DictionaryActivity extends AppCompatActivity {
                                 for(DocumentSnapshot document : task.getResult()){
                                     wordList.add(
                                             new Word(
-                                                    document.getString("linked"),
                                                     document.getString("spanish"),
-                                                    document.getString("tutunaku")
+                                                    document.getString("tutunaku"),
+                                                    document.getString("url")
                                             )
                                     );
                                     wordListAdapter.notifyDataSetChanged();
@@ -128,12 +151,13 @@ public class DictionaryActivity extends AppCompatActivity {
     public void findInDictionary(View view){
         try{
             if(tipoBusqueda.isChecked()){
-                loadDataFromCollection("tutunaku", txtSearch.getText().toString());
-            }else {
                 loadDataFromCollection("spanish", txtSearch.getText().toString());
+            }else {
+                loadDataFromCollection("tutunaku", txtSearch.getText().toString());
             }
+
         }catch(Exception e){
-            Log.d(TAG_SYSTEMLOG, e.getStackTrace().toString());
+            Log.d(TAG_SYSTEMLOG, Arrays.toString(e.getStackTrace()));
         }
     }
 }

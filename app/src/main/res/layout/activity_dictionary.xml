@@ -37,7 +37,7 @@
                     android:layout_weight="1"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
-                    android:text="Español - Totonaco"
+                    android:text="Totonaco - Español"
                     android:textSize="18sp" />
 
                 <android.support.design.widget.TextInputLayout
@@ -78,12 +78,9 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtTotalBusquedaId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
-                android:text="Resultados de búsqueda"
                 android:textSize="18sp" />
 
             <android.support.v7.widget.RecyclerView

@@ -1,30 +1,25 @@
 package com.android.kt.entity;
 
 public class Word {
-    private String linked;
     private String spanish;
     private String tutunaku;
+    private String url;
 
     public Word() {
     }
 
-    public Word(String spanish, String tutunaku) {
+    public Word(String spanish, String tutunaku, String url) {
         this.spanish = spanish;
         this.tutunaku = tutunaku;
+        this.url = url;
     }
 
-    public Word(String linked, String spanish, String tutunaku) {
-        this.linked = linked;
-        this.spanish = spanish;
-        this.tutunaku = tutunaku;
+    public String getUrl() {
+        return url;
     }
 
-    public String getLinked() {
-        return linked;
-    }
-
-    public void setLinked(String linked) {
-        this.linked = linked;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getSpanish() {

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
-import com.android.kt.fragments.FragmentDragAndDrop;
 import com.android.kt.fragments.FragmentMatching;
 import com.android.kt.fragments.FragmentSentences;
 import com.android.kt.kgosnitachiwin.MainActivity;
@@ -24,9 +23,8 @@ public class TasksApplicationActivity extends MainActivity {
         viewPager = (ViewPager)findViewById(R.id.idViewPager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentSentences(), "Aprende Oraciones");
-        adapter.addFragment(new FragmentDragAndDrop(), "Interactúa");
-        adapter.addFragment(new FragmentMatching(), "Relaciona contenido");
+        adapter.addFragment(new FragmentSentences(), "      Sentencias      ");
+        adapter.addFragment(new FragmentMatching(), "  Relaciona contenido  ");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
